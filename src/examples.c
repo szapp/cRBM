@@ -38,7 +38,7 @@ void run_bars_stripes_training(int epochs)
     size_t i;
     int *idx = NULL;
 
-    size_t num_images = 32, len, im_size = 16;
+    size_t num_images = 100, len, im_size = 500;
     double **train_images = NULL, **test_images=NULL;
     double *err = NULL;
     double *label = NULL;
@@ -49,11 +49,11 @@ void run_bars_stripes_training(int epochs)
     rbm_t nn;
 
     /* Set the basic simulation parameters */
-    nn.num_visibles = 16;
+    nn.num_visibles = 500;
     nn.num_hiddens = 36;
     nn.eta = .1;
     nn.alpha = .0;
-    nn.num_batches = 32;
+    nn.num_batches = 100;
     nn.batch_size = 1;
 
     /* Allocate memory for the RBM network */
@@ -71,11 +71,11 @@ void run_bars_stripes_training(int epochs)
     /* Load input samples */
     train_images = (double **)malloc(sizeof(double *) * num_images);
     test_images = (double **)malloc(sizeof(double *) * num_images);
-    for(int i = 0; i < 32; ++i) {
+    for(int i = 0; i < num_images; ++i) {
         train_images[i] = (double *) malloc(sizeof(double) * im_size);
         test_images[i] = (double *) malloc(sizeof(double) * im_size);
-    }	
-    read_bst_images("/shares/data/bs/bs_train_data.dat",
+    }
+    read_bst_images("ste.dat",
                     &train_images,
                     &label,
                     num_images,

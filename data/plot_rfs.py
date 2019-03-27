@@ -13,8 +13,8 @@ def read_bin_file(fname):
 
 
 if __name__ == '__main__':
-    im_size_x, im_size_y = int(sys.argv[2]), int(sys.argv[2])
-    nn_size_x, nn_size_y = int(sys.argv[3]), int(sys.argv[3])
+    im_size_x, im_size_y = int(sys.argv[2]), int(sys.argv[3])
+    nn_size_x, nn_size_y = int(sys.argv[4]), int(sys.argv[5])
 
     W = read_bin_file(sys.argv[1]).reshape(im_size_x*im_size_y,
                                            nn_size_x*nn_size_y)
@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    if sys.argv[4] != 'b':
+    if sys.argv[6] != 'b':
         im = ax.imshow(R, interpolation='nearest', cmap=plt.cm.gray)
     else:
         im = ax.imshow(R, interpolation='nearest', cmap=plt.cm.gray_r)
